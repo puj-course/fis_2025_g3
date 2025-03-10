@@ -11,5 +11,3 @@
 - David Piñeros:  Desarrollador y Tester
 - Santiago Avila: Diseñador y Analista de Sistemas
 
-
-
