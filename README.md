@@ -34,5 +34,3 @@ BogoTrash es una aplicación móvil diseñada para ayudar a los ciudadanos de Bo
 📧 Nos puedes contactar en clase si tienes alguna sugerencia! Hagamos de Bogotá una ciudad más limpia y sostenible! 🌎✨
 
 
-
-
