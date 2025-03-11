@@ -2,21 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Contenedor para el logo (como botón) y el nombre de la app -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BogoTrash - Reciclaje en Bogotá"
-        android:textSize="20sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:orientation="horizontal"
+        android:gravity="start">
 
+        <!-- Logo como ImageButton (pequeño en la parte superior izquierda) -->
+        <ImageButton
+            android:id="@+id/logoButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/bogotrashlogo"
+            android:contentDescription="Botón de logo de BogoTrash"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter" />
+
+        <!-- Nombre de la app al frente del logo -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BogoTrash - Reciclaje en Bogotá"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+    <!-- Botón principal debajo -->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver Mapa"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>
