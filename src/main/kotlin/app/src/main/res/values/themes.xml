@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.Bogotrash" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.BogoTrash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Personaliza tu tema aquí -->
+    </style>
 </resources>
