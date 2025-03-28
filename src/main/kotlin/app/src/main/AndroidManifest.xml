@@ -21,6 +21,13 @@
         <activity android:name=".view.MainActivity" android:exported="false" />
         <activity android:name=".view.RegisterActivity" android:exported="false" />
         <activity android:name=".view.LoginActivity" android:exported="false" />
+        <activity android:name=".view.MapActivity" android:exported="false" />
+        <activity android:name=".view.WasteGuideActivity" android:exported="false" />
+        <activity android:name=".view.RecyclerConnectionActivity" android:exported="false" />
+        <activity android:name=".view.RewardsActivity" android:exported="false" />
+        <activity android:name=".view.LearnMoreActivity" android:exported="false" />
+        <activity android:name=".view.CampaignActivity" android:exported="false" />
+        <activity android:name=".view.ProfileActivity" android:exported="false" />
     </application>
 
 </manifest>
