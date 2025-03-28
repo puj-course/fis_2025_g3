@@ -1,15 +1,18 @@
 package com.example.bogotrash.view
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.example.bogotrash.R
+import com.example.bogotrash.SessionManager
 import com.example.bogotrash.viewmodel.MapViewModel
 import com.example.bogotrash.viewmodel.WasteGuideViewModel
 import com.example.bogotrash.viewmodel.RecyclerConnectionViewModel
 import com.example.bogotrash.viewmodel.RewardViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,16 +37,62 @@ class MainActivity : AppCompatActivity() {
         recyclerViewModel.loadRecyclers()
         rewardViewModel.loadRewards()
 
-        // Configurar el ImageButton
-        val logoButton = findViewById<ImageButton>(R.id.logoButton)
-        logoButton.setOnClickListener {
-            Toast.makeText(this, "Logo presionado!", Toast.LENGTH_SHORT).show()
-            // Aquí puedes agregar más lógica, como navegar a otra pantalla
+        // Configurar clics en las tarjetas
+        findViewById<CardView>(R.id.mapCard).setOnClickListener {
+            startActivity(Intent(this, MapActivity::class.java))
         }
 
-        // Observar cambios (ejemplo con MapViewModel)
-        mapViewModel.recyclingPoints.observe(this) { points ->
-            // Actualizar UI (implementar en el layout)
+        findViewById<CardView>(R.id.wasteGuideCard).setOnClickListener {
+            startActivity(Intent(this, WasteGuideActivity::class.java))
         }
+
+        findViewById<CardView>(R.id.recyclerConnectionCard).setOnClickListener {
+            startActivity(Intent(this, RecyclerConnectionActivity::class.java))
+        }
+
+        findViewById<CardView>(R.id.rewardsCard).setOnClickListener {
+            startActivity(Intent(this, RewardsActivity::class.java))
+        }
+
+        // Configurar clics en las secciones
+        findViewById<LinearLayout>(R.id.learnMoreSection).setOnClickListener {
+            startActivity(Intent(this, LearnMoreActivity::class.java))
+        }
+
+        findViewById<LinearLayout>(R.id.campaignSection).setOnClickListener {
+            startActivity(Intent(this, CampaignActivity::class.java))
+        }
+
+        // Configurar la barra de navegación inferior
+        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    // Ya estamos en MainActivity
+                    true
+                }
+                R.id.nav_map -> {
+                    startActivity(Intent(this, MapActivity::class.java))
+                    true
+                }
+                R.id.nav_rewards -> {
+                    startActivity(Intent(this, RewardsActivity::class.java))
+                    true
+                }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Agregar botón de cerrar sesión (opcional)
+        // Puedes agregar un botón en el layout o en el perfil para cerrar sesión
+        // Ejemplo:
+        // val sessionManager = SessionManager(this)
+        // sessionManager.clearSession()
+        // startActivity(Intent(this, WelcomeActivity::class.java))
+        // finish()
     }
 }
