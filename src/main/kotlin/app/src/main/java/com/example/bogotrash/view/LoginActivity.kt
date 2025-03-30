@@ -8,12 +8,25 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
 import com.example.bogotrash.SessionManager
+import com.example.bogotrash.repository.UserRepository
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // 🔍 TEST DE CONEXIÓN TEMPORAL (PUEDES BORRAR LUEGO)
+        Thread {
+            val conn = com.example.bogotrash.repository.DatabaseConnection.getConnection()
+            val rs = conn?.createStatement()?.executeQuery("SELECT email FROM Users")
+            while (rs != null && rs.next()) {
+                println("Usuario: ${rs.getString("email")}")
+            }
+            rs?.close()
+            conn?.close()
+        }.start()
 
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
@@ -28,35 +41,32 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Simulación de inicio de sesión con valores quemados
-            val existingUserEmail = "user@example.com"
-            val existingUserPassword = "password123"
+            // Realizar autenticación contra la base de datos
+            Thread {
+                val success = UserRepository.loginUser(email, password)
+                runOnUiThread {
+                    if (success) {
+                        val sessionManager = SessionManager(this)
+                        sessionManager.saveSession(email)
 
-            // Integrar con MySQL
-            // hacer una solicitud a tu backend para verificar las credenciales
-            // Ejemplo con pseudocódigo:
-            // val response = MySQLClient.loginUser(email, password)
-            // if (response.isSuccess) {
-            //     sessionManager.saveSession(email)
-            //     navigateToMainActivity()
-            // } else {
-            //     Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-            // }
+                        Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
-            // Simulación: Verificar las credenciales
-            if (email == existingUserEmail && password == existingUserPassword) {
-                // Guardar la sesión
-                val sessionManager = SessionManager(this)
-                sessionManager.saveSession(email)
+                        // Verificar si es reciclador
+                        Thread {
+                            val isRecycler = UserRepository.isRecycler(email)
+                            runOnUiThread {
+                                val intent = Intent(this, MainActivity::class.java)
+                                intent.putExtra("isRecycler", isRecycler)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }.start()
 
-                // Navegar a MainActivity
-                Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish() // Cerrar LoginActivity
-            } else {
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
-            }
+                    } else {
+                        Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }.start()
         }
     }
 }

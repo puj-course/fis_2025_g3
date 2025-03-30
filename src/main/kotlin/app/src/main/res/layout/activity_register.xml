@@ -1,51 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white"
-    android:padding="16dp">
+    android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registro"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/Blue"
-        android:layout_marginBottom="32dp" />
-
-    <!-- Campo para el email -->
-    <EditText
-        android:id="@+id/emailEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:backgroundTint="@color/Red"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp" />
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="start">
 
-    <!-- Campo para la contraseña -->
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:backgroundTint="@color/Red"
-        android:textColor="@color/black"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registro"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/Blue"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
 
-    <!-- Botón de registro -->
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrar"
-        android:backgroundTint="@color/Yellow"
-        android:textColor="@color/Red"
-        android:layout_gravity="center" />
+        <!-- Campo para el nombre -->
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nombre"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
 
-</LinearLayout>
+        <!-- Campo para el email -->
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campo para la contraseña -->
+        <EditText
+            android:id="@+id/passwordEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Checkbox: ¿Es reciclador? -->
+        <CheckBox
+            android:id="@+id/recyclerCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¿Eres reciclador?"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Campos adicionales del reciclador -->
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Teléfono"
+            android:inputType="phone"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Dirección"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/zoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Zona"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            android:visibility="gone" />
+
+        <!-- Botón de registro -->
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registrar"
+            android:backgroundTint="@color/Yellow"
+            android:textColor="@color/Red"
+            android:textSize="16sp"
+            android:padding="12dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
