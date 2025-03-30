@@ -48,7 +48,7 @@ dependencies {
     //mapas
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     //DB
-    implementation ("org.mariadb.jdbc:mariadb-java-client:2.7.3")
+    implementation ("mysql:mysql-connector-java:5.1.49")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

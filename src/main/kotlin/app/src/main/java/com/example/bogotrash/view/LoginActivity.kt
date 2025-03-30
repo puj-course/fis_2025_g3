@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
 import com.example.bogotrash.SessionManager
+import com.example.bogotrash.repository.DatabaseConnection
 import com.example.bogotrash.repository.UserRepository
 
 class LoginActivity : AppCompatActivity() {
@@ -17,15 +18,23 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // 🔍 TEST DE CONEXIÓN TEMPORAL (PUEDES BORRAR LUEGO)
+        // ✅ TEST DE CONEXIÓN TEMPORAL (puedes borrar más adelante)
         Thread {
-            val conn = com.example.bogotrash.repository.DatabaseConnection.getConnection()
-            val rs = conn?.createStatement()?.executeQuery("SELECT email FROM Users")
-            while (rs != null && rs.next()) {
-                println("Usuario: ${rs.getString("email")}")
+            try {
+                val conn = DatabaseConnection.getConnection()
+                val stmt = conn?.createStatement()
+                val rs = stmt?.executeQuery("SELECT email FROM Users")
+
+                while (rs != null && rs.next()) {
+                    println("✅ Usuario encontrado: ${rs.getString("email")}")
+                }
+
+                rs?.close()
+                stmt?.close()
+                conn?.close()
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
-            rs?.close()
-            conn?.close()
         }.start()
 
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
@@ -41,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Realizar autenticación contra la base de datos
+            // 🔐 Autenticación contra MySQL
             Thread {
                 val success = UserRepository.loginUser(email, password)
                 runOnUiThread {
@@ -70,3 +79,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+
