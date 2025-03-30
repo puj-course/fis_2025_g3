@@ -2,6 +2,7 @@ package com.example.bogotrash.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -87,12 +88,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Agregar botón de cerrar sesión (opcional)
-        // Puedes agregar un botón en el layout o en el perfil para cerrar sesión
-        // Ejemplo:
-        // val sessionManager = SessionManager(this)
-        // sessionManager.clearSession()
-        // startActivity(Intent(this, WelcomeActivity::class.java))
-        // finish()
+        // Botón logout
+        val logoutButton = findViewById<Button>(R.id.logoutButton)
+        logoutButton.setOnClickListener {
+            val sessionManager = SessionManager(this)
+            sessionManager.clearSession()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

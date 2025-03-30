@@ -6,13 +6,13 @@ import java.sql.SQLException
 
 object DatabaseConnection {
 
-    private const val URL = "jdbc:mariadb://metro.proxy.rlwy.net:58943/railway"
+    private const val URL = "jdbc:mysql://metro.proxy.rlwy.net:58943/railway"
     private const val USER = "root"
     private const val PASSWORD = "GmQHnjsCpsQSprnCxiSdPqpNIpXesnUz"
 
     init {
         try {
-            Class.forName("com.mariadb.jdbc.Driver")
+            Class.forName("com.mysql.jdbc.Driver") // 👈 Correcto para la versión 5.1.49
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }
@@ -27,3 +27,4 @@ object DatabaseConnection {
         }
     }
 }
+
