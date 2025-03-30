@@ -47,6 +47,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     //mapas
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    //DB
+    implementation ("org.mariadb.jdbc:mariadb-java-client:2.7.3")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

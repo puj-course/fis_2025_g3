@@ -1,13 +1,12 @@
 package com.example.bogotrash.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.model.Recycler
+import com.example.bogotrash.model.User
+import com.example.bogotrash.repository.UserRepository
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -15,50 +14,51 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        val nameEditText = findViewById<EditText>(R.id.nameEditText)
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
+        val isRecyclerCheckBox = findViewById<CheckBox>(R.id.recyclerCheckBox)
+        val phoneEditText = findViewById<EditText>(R.id.phoneEditText)
+        val addressEditText = findViewById<EditText>(R.id.addressEditText)
+        val zoneEditText = findViewById<EditText>(R.id.zoneEditText)
         val registerButton = findViewById<Button>(R.id.registerButton)
 
         registerButton.setOnClickListener {
+            val name = nameEditText.text.toString().trim()
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Completa todos los campos obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Simulación de registro con valores quemados
-            val existingUserEmail = "user@example.com"
-            val existingUserPassword = "password123"
+            val user = User(0, name, email, password)
 
-            //  Integrar con MySQL
-            // hacer una solicitud a tu backend para verificar si el email ya está registrado
-            // pseudocódigo:
-            // val response = MySQLClient.checkUserExists(email)
-            // if (response.isUserExists) {
-            //     Toast.makeText(this, "El email ya está registrado", Toast.LENGTH_SHORT).show()
-            //     return@setOnClickListener
-            // }
-            // MySQLClient.registerUser(email, password)
+            Thread {
+                if (isRecyclerCheckBox.isChecked) {
+                    val phone = phoneEditText.text.toString().trim()
+                    val address = addressEditText.text.toString().trim()
+                    val zone = zoneEditText.text.toString().trim()
 
-            // Simulación: Verificar si el email ya está "registrado"
-            if (email == existingUserEmail) {
-                Toast.makeText(this, "El email ya está registrado", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+                    if (phone.isEmpty() || address.isEmpty() || zone.isEmpty()) {
+                        runOnUiThread {
+                            Toast.makeText(this, "Faltan datos del reciclador", Toast.LENGTH_SHORT).show()
+                        }
+                        return@Thread
+                    }
 
-            // Simulación: "Registrar" el usuario
-            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                    val recycler = Recycler(0, name, phone, address, zone)
+                    UserRepository.registerRecycler(user, recycler)
+                } else {
+                    UserRepository.registerUser(user)
+                }
 
-            // Guardar la sesión
-            val sessionManager = SessionManager(this)
-            sessionManager.saveSession(email)
-
-            // Navegar a MainActivity
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish() // Cerrar RegisterActivity
+                runOnUiThread {
+                    Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }.start()
         }
     }
 }
