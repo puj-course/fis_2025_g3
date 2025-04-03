@@ -1,4 +1,4 @@
-name: Compilación
+name: Compilacion
 run-name: Prueba de compilado
 on:
   push:
