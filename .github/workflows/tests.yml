@@ -24,9 +24,12 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: gradle
+          cache-dependency-path: |
+            src/*.gradle*
+            src/**/gradle-wrapper.properties
 
       - name: Unit test
-        run: ./gradlew testDebugUnitTest
+        run: src/main/kotlin/gradlew testDebugUnitTest
 
       - name: Test report
         uses: asadmansr/android-test-report-action@v1.2.0
