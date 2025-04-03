@@ -1,5 +1,5 @@
-name: Compilacion
-run-name: Prueba de compilado para @${{ github.actor }}
+name: Tests
+run-name: Pruebas unitarias para @${{ github.actor }}
 on:
   push:
     branches:
@@ -25,7 +25,9 @@ jobs:
           java-version: '21'
           cache: gradle
 
-      - name: Preparar gradle
-        uses: gradle/actions/setup-gradle@v4
-      - name: Compilar con Gradle
-        run: ./gradlew build
+      - name: Unit test
+        run: ./gradlew testDebugUnitTest
+
+      - name: Test report
+        uses: asadmansr/android-test-report-action@v1.2.0
+        if: ${{ always() }}
