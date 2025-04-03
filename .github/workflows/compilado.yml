@@ -1,0 +1,31 @@
+name: Compilación
+run-name: Prueba de compilado
+on:
+  push:
+    branches:
+      - 'features-**'
+    paths:
+      - 'src/**'
+  pull_request:
+    types: [opened]
+    branches:
+      - 'develop-g3'
+      - main
+    paths:
+      - 'src/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: gradle
+
+      - name: Preparar gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Compilar con Gradle
+        run: ./gradlew build
