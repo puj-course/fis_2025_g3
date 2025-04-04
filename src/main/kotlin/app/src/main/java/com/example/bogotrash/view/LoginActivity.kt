@@ -18,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // ✅ TEST DE CONEXIÓN TEMPORAL (puedes borrar más adelante)
+        // Test de conexión para depurar
         Thread {
             try {
                 val conn = DatabaseConnection.getConnection()
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 🔐 Autenticación contra MySQL
+            //Autenticación en la BD
             Thread {
                 val success = UserRepository.loginUser(email, password)
                 runOnUiThread {
