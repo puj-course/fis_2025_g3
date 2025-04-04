@@ -6,7 +6,7 @@ on:
       - 'features-**'
     paths:
       - 'src/**'
-      - '.github/*'
+      - '.github/**'
   pull_request:
     types: [opened]
     branches:
@@ -14,7 +14,7 @@ on:
       - main
     paths:
       - 'src/**'
-      - '.github/*'
+      - '.github/**'
 jobs:
   build:
     runs-on: ubuntu-latest
