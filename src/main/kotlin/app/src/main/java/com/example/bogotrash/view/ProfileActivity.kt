@@ -16,14 +16,12 @@ import kotlin.concurrent.thread
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var sessionManager: SessionManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         // Inicializar SessionManager
-        sessionManager = SessionManager(this)
+        val session = SessionManager.instance
 
         // Obtener referencias a los elementos de la UI
         val userNameTextView = findViewById<TextView>(R.id.user_name)
@@ -37,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // Configurar el botón de logout
         logoutButton.setOnClickListener {
-            sessionManager.clearSession()
+            session.clearSession()
             val intent = Intent(this, WelcomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
@@ -45,7 +43,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Obtener el email del usuario actual
-        val userEmail = sessionManager.getUserEmail()
+        val userEmail = session.getUserEmail()
         if (userEmail == null) {
             Toast.makeText(this, "Error: No hay sesión activa", Toast.LENGTH_SHORT).show()
             finish()
