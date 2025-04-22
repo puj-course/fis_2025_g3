@@ -12,9 +12,11 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        SessionManager.init(this)
+
         // Verificar si hay una sesión activa
-        val sessionManager = SessionManager(this)
-        if (sessionManager.isLoggedIn()) {
+        val session = SessionManager.instance
+        if (session.isLoggedIn()) {
             // Si hay sesión, ir directamente a MainActivity
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

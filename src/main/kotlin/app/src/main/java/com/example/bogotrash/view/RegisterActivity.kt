@@ -14,6 +14,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+
         val nameEditText = findViewById<EditText>(R.id.nameEditText)
         val emailEditText = findViewById<EditText>(R.id.emailEditText)
         val passwordEditText = findViewById<EditText>(R.id.passwordEditText)
@@ -22,6 +23,14 @@ class RegisterActivity : AppCompatActivity() {
         val addressEditText = findViewById<EditText>(R.id.addressEditText)
         val zoneEditText = findViewById<EditText>(R.id.zoneEditText)
         val registerButton = findViewById<Button>(R.id.registerButton)
+
+        //Mostramos los campos del reciclador
+        isRecyclerCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            val visibility = if (isChecked) LinearLayout.VISIBLE else LinearLayout.GONE
+            phoneEditText.visibility = visibility
+            addressEditText.visibility = visibility
+            zoneEditText.visibility = visibility
+        }
 
         registerButton.setOnClickListener {
             val name = nameEditText.text.toString().trim()
