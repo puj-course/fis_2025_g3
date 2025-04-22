@@ -8,6 +8,7 @@ Este documento describe los principales diagramas del proyecto **BogoTrash**, ex
 
 
 
+
 ### Uso del patrón MVVM en el proyecto BogoTrash
 
 El patrón Model-View-ViewModel (MVVM) se utiliza en el proyecto BogoTrash para lograr una separación clara de responsabilidades, lo cual mejora la mantenibilidad, escalabilidad y testabilidad del código.
@@ -31,6 +32,7 @@ En el contexto de Android, MVVM es un patrón ampliamente recomendado, ya que pe
 
 ## 🗄️ Diagrama Entidad-Relación (ER)
 
+![image](https://github.com/user-attachments/assets/c152599c-a2a3-4dd1-b51a-13bc0773db24)
 
 
 El diagrama entidad-relación representa la estructura lógica de la base de datos de BogoTrash. Las principales entidades del sistema y sus relaciones son:
