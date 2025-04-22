@@ -6,7 +6,7 @@ Este documento describe los principales diagramas del proyecto **BogoTrash**, ex
 
 ## 📚 Diagrama de Clases
 
-
+![image](https://github.com/user-attachments/assets/3fff44dd-75b4-4764-8da4-b3ff43a03464)
 
 
 ### Uso del patrón MVVM en el proyecto BogoTrash
@@ -48,6 +48,8 @@ Este modelo está alineado con la lógica del dominio y respalda las operaciones
 
 ## 🧱 Diagrama de Componentes
 
+![diagramaComponentes](https://github.com/user-attachments/assets/ea9c3cfb-a709-455c-9702-1712b674513f)
+
 
 Este diagrama muestra los componentes lógicos del sistema y sus interacciones, usando conectores UML `provided` y `required` para representar las dependencias explícitas entre módulos:
 
@@ -62,6 +64,8 @@ Este diseño fomenta la modularidad y escalabilidad del sistema.
 ---
 
 ## 🚀 Diagrama de Despliegue
+
+![diagramaDespliegue](https://github.com/user-attachments/assets/b7155167-dec6-4d1d-bacd-557bf01f7045)
 
 
 El diagrama de despliegue representa cómo se distribuyen los componentes del sistema a nivel físico:
