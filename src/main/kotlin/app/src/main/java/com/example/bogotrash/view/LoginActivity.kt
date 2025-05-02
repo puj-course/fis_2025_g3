@@ -55,8 +55,8 @@ class LoginActivity : AppCompatActivity() {
                 val success = UserRepository.loginUser(email, password)
                 runOnUiThread {
                     if (success) {
-                        val sessionManager = SessionManager(this)
-                        sessionManager.saveSession(email)
+                        val session = SessionManager.instance
+                        session.saveSession(email)
 
                         Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 

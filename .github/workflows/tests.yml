@@ -6,7 +6,7 @@ on:
       - 'features-**'
     paths:
       - 'src/**'
-      - '.github/*'
+      - '.github/**'
   pull_request:
     types: [opened]
     branches:
@@ -14,10 +14,13 @@ on:
       - main
     paths:
       - 'src/**'
-      - '.github/*'
+      - '.github/**'
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/main/kotlin
     steps:
       - uses: actions/checkout@v4
       - name: Preparar JDK
@@ -25,13 +28,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: gradle
+          cache: 'gradle'
           cache-dependency-path: |
             src/*.gradle*
             src/**/gradle-wrapper.properties
 
       - name: Unit test
-        run: src/main/kotlin/gradlew testDebugUnitTest
+        run: ./gradlew testDebugUnitTest
 
       - name: Test report
         uses: asadmansr/android-test-report-action@v1.2.0
