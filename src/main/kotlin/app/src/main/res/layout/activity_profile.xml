@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/Red"
-            app:navigationIcon="@android:drawable/ic_menu_revert"
             app:title="Mi Perfil"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -31,7 +30,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Subtitle -->
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="match_parent"
@@ -40,9 +38,8 @@
                 android:text="🌿 Usuario ecológico en crecimiento"
                 android:textColor="@color/Blue"
                 android:textSize="16sp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp" />
 
-            <!-- Profile Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,29 +54,25 @@
                     android:orientation="vertical"
                     android:gravity="center_horizontal">
 
-                    <!-- Profile Picture -->
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:src="@drawable/persona"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="@color/Yellow"
-                    android:layout_marginBottom="16dp"/>
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/Yellow"
+                        android:layout_marginBottom="16dp"/>
 
-                    <!-- User Name -->
                     <TextView
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nombre del usuario"
+                        android:text="Cargando..."
                         android:textColor="@color/Blue"
-                        android:fontFamily="sans-serif"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
 
-                    <!-- Level -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -115,13 +108,12 @@
                             android:id="@+id/user_level"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Eco-Novato"
+                            android:text="..."
                             android:textColor="@color/Blue"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
 
-                    <!-- Progress Bar -->
                     <com.google.android.material.progressindicator.LinearProgressIndicator
                         android:id="@+id/level_progress"
                         android:layout_width="match_parent"
@@ -137,13 +129,13 @@
                         android:id="@+id/progress_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0% hacia el siguiente nivel"
+                        android:text="Cargando progreso..."
                         android:textColor="@color/black"
                         android:textSize="16sp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Stats Section -->
+            <!-- Estadísticas del usuario -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Recycled Waste -->
+                    <!-- Total Points -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -184,7 +176,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:text="♻️"
+                                android:text="🍃"
                                 android:gravity="center"
                                 android:textColor="@color/Blue"
                                 android:textSize="16sp"/>
@@ -194,55 +186,13 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Residuos reciclados:"
+                            android:text="Puntos totales:"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:layout_marginStart="8dp"/>
 
                         <TextView
-                            android:id="@+id/recycled_waste"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0 kg"
-                            android:textColor="@color/Blue"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <!-- Places Visited -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            app:cardCornerRadius="15dp"
-                            app:cardBackgroundColor="@color/Yellow">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="📍"
-                                android:gravity="center"
-                                android:textColor="@color/Blue"
-                                android:textSize="16sp"/>
-                        </androidx.cardview.widget.CardView>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Puntos visitados:"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:layout_marginStart="8dp"/>
-
-                        <TextView
-                            android:id="@+id/places_visited"
+                            android:id="@+id/total_points"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
@@ -251,7 +201,49 @@
                             android:textStyle="bold"/>
                     </LinearLayout>
 
-                    <!-- Rewards -->
+                    <!-- Campaigns Participated -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:cardCornerRadius="15dp"
+                            app:cardBackgroundColor="@color/Yellow">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="📅"
+                                android:gravity="center"
+                                android:textColor="@color/Blue"
+                                android:textSize="16sp"/>
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Campañas que he estado:"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginStart="8dp"/>
+
+                        <TextView
+                            android:id="@+id/campaigns_participated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/Blue"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <!-- Rewards Redeemed -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -294,12 +286,12 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Logout Button -->
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🚪 Cerrar sesión"
+                android:text="Cerrar sesión"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
 import com.example.bogotrash.SessionManager
 import com.example.bogotrash.repository.DatabaseConnection
-import com.example.bogotrash.repository.UserRepository
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import java.sql.Connection
@@ -20,20 +19,17 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        // Inicializar SessionManager
         val session = SessionManager.instance
 
-        // Obtener referencias a los elementos de la UI
         val userNameTextView = findViewById<TextView>(R.id.user_name)
         val userLevelTextView = findViewById<TextView>(R.id.user_level)
         val levelProgress = findViewById<LinearProgressIndicator>(R.id.level_progress)
         val progressText = findViewById<TextView>(R.id.progress_text)
-        val recycledWasteTextView = findViewById<TextView>(R.id.recycled_waste)
-        val placesVisitedTextView = findViewById<TextView>(R.id.places_visited)
+        val totalPointsTextView = findViewById<TextView>(R.id.total_points)  // <- NUEVO
+        val participationsTextView = findViewById<TextView>(R.id.campaigns_participated)
         val rewardsRedeemedTextView = findViewById<TextView>(R.id.rewards_redeemed)
         val logoutButton = findViewById<MaterialButton>(R.id.logout_button)
 
-        // Configurar el botón de logout
         logoutButton.setOnClickListener {
             session.clearSession()
             val intent = Intent(this, WelcomeActivity::class.java)
@@ -42,7 +38,6 @@ class ProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        // Obtener el email del usuario actual
         val userEmail = session.getUserEmail()
         if (userEmail == null) {
             Toast.makeText(this, "Error: No hay sesión activa", Toast.LENGTH_SHORT).show()
@@ -50,28 +45,26 @@ class ProfileActivity : AppCompatActivity() {
             return
         }
 
-        // Cargar datos del usuario desde la base de datos en un hilo separado
         thread {
             try {
                 val conn: Connection? = DatabaseConnection.getConnection()
                 conn?.use { connection ->
-                    // Consulta para obtener datos del usuario
-                    val userQuery = """
-                        SELECT name, total_points 
+
+                    val stmtUser = connection.prepareStatement("""
+                        SELECT id, name, total_points 
                         FROM Users 
                         WHERE email = ?
-                    """.trimIndent()
-                    val userStmt = connection.prepareStatement(userQuery)
-                    userStmt.setString(1, userEmail)
-                    val userRs = userStmt.executeQuery()
+                    """.trimIndent())
+                    stmtUser.setString(1, userEmail)
+                    val rsUser = stmtUser.executeQuery()
 
-                    if (userRs.next()) {
-                        val name = userRs.getString("name")
-                        val totalPoints = userRs.getInt("total_points")
+                    if (rsUser.next()) {
+                        val userId = rsUser.getInt("id")
+                        val name = rsUser.getString("name")
+                        val totalPoints = rsUser.getInt("total_points")
 
-                        // Calcular nivel y progreso (ejemplo simple basado en puntos)
-                        val level = totalPoints / 100 // Cada 100 puntos sube un nivel
-                        val progress = (totalPoints % 100) // Progreso al siguiente nivel
+                        val level = totalPoints / 100
+                        val progress = totalPoints % 100
                         val levelName = when {
                             level >= 5 -> "Eco-Maestro"
                             level >= 3 -> "Eco-Experto"
@@ -79,54 +72,42 @@ class ProfileActivity : AppCompatActivity() {
                             else -> "Eco-Novato"
                         }
 
-                        // Consulta para estadísticas (asumiendo tablas adicionales)
-                        val statsQuery = """
+                        val stmtStats = connection.prepareStatement("""
                             SELECT 
-                                (SELECT COALESCE(SUM(weight), 0) FROM RecyclingRecords WHERE user_id = u.id) as recycled_waste,
-                                (SELECT COUNT(*) FROM RecyclingPointVisits WHERE user_id = u.id) as places_visited,
-                                (SELECT COUNT(*) FROM UserRewards WHERE user_id = u.id) as rewards_redeemed
-                            FROM Users u
-                            WHERE u.email = ?
-                        """.trimIndent()
-                        val statsStmt = connection.prepareStatement(statsQuery)
-                        statsStmt.setString(1, userEmail)
-                        val statsRs = statsStmt.executeQuery()
+                                (SELECT COUNT(*) FROM Participations WHERE user_id = ?) AS participations,
+                                (SELECT COUNT(*) FROM UserRewards WHERE user_id = ?) AS rewards
+                        """.trimIndent())
+                        stmtStats.setInt(1, userId)
+                        stmtStats.setInt(2, userId)
+                        val rsStats = stmtStats.executeQuery()
 
-                        var recycledWaste = 0f
-                        var placesVisited = 0
+                        var participations = 0
                         var rewardsRedeemed = 0
-                        if (statsRs.next()) {
-                            recycledWaste = statsRs.getFloat("recycled_waste")
-                            placesVisited = statsRs.getInt("places_visited")
-                            rewardsRedeemed = statsRs.getInt("rewards_redeemed")
+                        if (rsStats.next()) {
+                            participations = rsStats.getInt("participations")
+                            rewardsRedeemed = rsStats.getInt("rewards")
                         }
 
-                        // Actualizar UI en el hilo principal
                         runOnUiThread {
                             userNameTextView.text = name
                             userLevelTextView.text = levelName
                             levelProgress.progress = progress
                             progressText.text = "$progress% hacia el siguiente nivel"
-                            recycledWasteTextView.text = String.format("%.1f kg", recycledWaste)
-                            placesVisitedTextView.text = placesVisited.toString()
+                            totalPointsTextView.text = totalPoints.toString()
+                            participationsTextView.text = participations.toString()
                             rewardsRedeemedTextView.text = rewardsRedeemed.toString()
                         }
 
-                        statsRs.close()
-                        statsStmt.close()
-                    } else {
-                        runOnUiThread {
-                            Toast.makeText(this, "Usuario no encontrado", Toast.LENGTH_SHORT).show()
-                        }
+                        rsStats.close()
+                        stmtStats.close()
                     }
 
-                    userRs.close()
-                    userStmt.close()
+                    rsUser.close()
+                    stmtUser.close()
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
                 runOnUiThread {
-                    Toast.makeText(this, "Error al cargar datos: ${e.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Error al cargar perfil: ${e.message}", Toast.LENGTH_LONG).show()
                 }
             }
         }
