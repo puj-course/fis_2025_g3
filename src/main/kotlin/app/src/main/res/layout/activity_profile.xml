@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/Red"
-            app:navigationIcon="@android:drawable/ic_menu_revert"
             app:title="Mi Perfil"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
@@ -299,7 +298,7 @@
                 android:id="@+id/logout_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🚪 Cerrar sesión"
+                android:text="Cerrar sesión"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
