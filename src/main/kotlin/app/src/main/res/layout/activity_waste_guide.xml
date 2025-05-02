@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white">
+    android:padding="16dp"
+    android:background="@drawable/gradient_background">
 
+    <!-- Título -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="guia reciclaje"
-        android:textSize="20sp"
-        android:textColor="@color/Blue" />
+        android:text="Aprender y participar"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/Blue"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- TabLayout para pestañas -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabBackground="@color/Yellow"
+        app:tabTextColor="@color/Red"
+        app:tabSelectedTextColor="@color/Blue"
+        app:tabIndicatorColor="@color/Red"
+        app:tabMode="fixed"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ViewPager2 para el contenido de las pestañas -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 </LinearLayout>
