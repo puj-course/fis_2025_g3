@@ -10,12 +10,14 @@ import com.example.bogotrash.R
 import com.example.bogotrash.core.SessionManager
 import com.example.bogotrash.repository.DatabaseConnection
 import com.example.bogotrash.repository.UserRepository
+import androidx.core.view.WindowCompat
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_login)
 
         // Test de conexión para depurar

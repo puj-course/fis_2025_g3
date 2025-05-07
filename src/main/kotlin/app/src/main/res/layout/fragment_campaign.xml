@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:fitsSystemWindows="true">
 
     <!-- Sección Campaña Activa -->
     <androidx.cardview.widget.CardView

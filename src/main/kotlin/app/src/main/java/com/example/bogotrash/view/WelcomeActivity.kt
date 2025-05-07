@@ -6,11 +6,13 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
 import com.example.bogotrash.core.SessionManager
+import androidx.core.view.WindowCompat
 
 class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
 
         SessionManager.init(this)
 

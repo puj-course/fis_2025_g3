@@ -14,6 +14,7 @@ import com.example.bogotrash.viewmodel.WasteGuideViewModel
 import com.example.bogotrash.viewmodel.RecyclerConnectionViewModel
 import com.example.bogotrash.viewmodel.RewardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.core.view.WindowCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_main)
 
         // Inicializar ViewModels

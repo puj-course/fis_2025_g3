@@ -7,11 +7,13 @@ import com.example.bogotrash.R
 import com.example.bogotrash.view.adapter.WasteGuidePagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import androidx.core.view.WindowCompat
 
 class WasteGuideActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_waste_guide)
 
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
