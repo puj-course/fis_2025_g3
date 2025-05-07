@@ -37,7 +37,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bogotá más limpia, un clic a la vez"
+        android:text="Bogotá más limpia, un toque a la vez"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:paddingHorizontal="16dp"
@@ -314,16 +314,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Botón de logout -->
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/Red"
-        android:textColor="@color/white" />
 
     <!-- Barra de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

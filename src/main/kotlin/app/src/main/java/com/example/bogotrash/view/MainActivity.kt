@@ -89,18 +89,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        // Botón logout
-        val logoutButton = findViewById<Button>(R.id.logoutButton)
-        logoutButton.setOnClickListener {
-            val session = SessionManager.instance
-            session.clearSession()
-
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
-
     }
 }
