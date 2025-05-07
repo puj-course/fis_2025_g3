@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.BogoTrash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BogoTrash" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowFullscreen">false</item>
         <!-- Otras personalizaciones -->
     </style>
