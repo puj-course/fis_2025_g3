@@ -1,4 +1,4 @@
-package com.example.bogotrash
+package com.example.bogotrash.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

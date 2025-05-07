@@ -1,4 +1,4 @@
-package com.example.bogotrash
+package com.example.bogotrash.core
 
 import android.content.Context
 import android.content.SharedPreferences

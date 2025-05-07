@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.core.SessionManager
 
 class WelcomeActivity : AppCompatActivity() {
 

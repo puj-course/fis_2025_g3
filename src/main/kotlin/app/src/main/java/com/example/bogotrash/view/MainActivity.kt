@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.core.SessionManager
 import com.example.bogotrash.viewmodel.MapViewModel
 import com.example.bogotrash.viewmodel.WasteGuideViewModel
 import com.example.bogotrash.viewmodel.RecyclerConnectionViewModel
