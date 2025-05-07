@@ -44,6 +44,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:2.2.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     //view model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     //livedata
