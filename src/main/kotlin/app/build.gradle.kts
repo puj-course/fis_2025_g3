@@ -41,12 +41,18 @@ android {
 }
 
 dependencies {
+    implementation("de.hdodenhof:circleimageview:2.2.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.google.android.material:material:1.5.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     //view model
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     //livedata
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     //mapas
     implementation("com.google.android.gms:play-services-maps:18.2.0")
+    //DB
+    implementation ("mysql:mysql-connector-java:5.1.49")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

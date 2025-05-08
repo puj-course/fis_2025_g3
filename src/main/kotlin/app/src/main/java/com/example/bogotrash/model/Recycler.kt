@@ -5,5 +5,5 @@ data class Recycler(
     val name: String,
     val phone: String,
     val address: String,
-    val serviceArea: String // Ej. "Barrio X"
+    val zone: String
 )
