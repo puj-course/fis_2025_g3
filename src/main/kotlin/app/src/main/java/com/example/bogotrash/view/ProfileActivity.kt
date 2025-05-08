@@ -6,17 +6,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.core.SessionManager
 import com.example.bogotrash.repository.DatabaseConnection
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import java.sql.Connection
 import kotlin.concurrent.thread
+import androidx.core.view.WindowCompat
 
 class ProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_profile)
 
         val session = SessionManager.instance

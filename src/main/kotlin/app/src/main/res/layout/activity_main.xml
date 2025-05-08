@@ -12,15 +12,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:fitsSystemWindows="true">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/bogotrashlogo"
             android:contentDescription="Logo de BogoTrash"
-            android:layout_marginEnd="8dp"
-            app:tint="@color/Red" />
+            android:layout_margin="10dp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bogotá más limpia, un clic a la vez"
+        android:text="Bogotá más limpia, un toque a la vez"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:paddingHorizontal="16dp"
@@ -137,7 +138,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Guía de Clasificación"
+                            android:text="Aprende y participa"
                             android:textSize="16sp"
                             android:textColor="@color/Blue"
                             android:gravity="center" />
@@ -290,7 +291,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Participa y gana premios"
+                        android:text="Participa y gana ayudando a nuestra ciudad!"
                         android:textSize="12sp"
                         android:textColor="@color/black" />
 
@@ -313,16 +314,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <!-- Botón de logout -->
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/Red"
-        android:textColor="@color/white" />
 
     <!-- Barra de navegación inferior -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

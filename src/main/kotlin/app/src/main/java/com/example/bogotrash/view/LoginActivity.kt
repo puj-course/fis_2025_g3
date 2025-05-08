@@ -7,15 +7,17 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.core.SessionManager
 import com.example.bogotrash.repository.DatabaseConnection
 import com.example.bogotrash.repository.UserRepository
+import androidx.core.view.WindowCompat
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_login)
 
         // Test de conexión para depurar

@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/white"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:fitsSystemWindows="true">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,7 +14,7 @@
         android:text="Inicio de Sesión"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/Blue"
+        android:textColor="@color/Red"
         android:layout_marginBottom="32dp" />
 
     <!-- Campo para el email -->
@@ -44,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar Sesión"
-        android:backgroundTint="@color/Yellow"
-        android:textColor="@color/Red"
+        android:backgroundTint="@color/Red"
+        android:textColor="@color/white"
         android:layout_gravity="center" />
 
 </LinearLayout>
