@@ -7,144 +7,178 @@
     android:padding="8dp"
     android:fitsSystemWindows="true">
 
-    <!-- Tarjeta 1 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/educationCard1"
+    <!-- ScrollView para hacer que el contenido sea desplazable -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        android:layout_marginBottom="8dp">
+        android:layout_height="match_parent">
 
+        <!-- LinearLayout para contener todas las tarjetas -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_menu_info_details"
-                android:layout_marginEnd="8dp"
-                app:tint="@color/Red" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <!-- Tarjeta 1 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/educationCard1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Separa tus residuos correctamente"
-                    android:textSize="16sp"
-                    android:textColor="@color/Blue" />
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clasifica los residuos en orgánicos, reciclables y no reciclables. Usa contenedores diferentes para papel, plástico, vidrio y residuos orgánicos."
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/Red" />
 
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-    <!-- Tarjeta 2 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/educationCard2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        android:layout_marginBottom="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Separa tus residuos correctamente"
+                            android:textSize="16sp"
+                            android:textColor="@color/Blue" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Clasifica los residuos en orgánicos, reciclables y no reciclables. Usa contenedores específicos para papel, cartón, plástico, vidrio y residuos orgánicos. Esto facilita el reciclaje y evita la contaminación cruzada que dificulta su procesamiento."
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_menu_info_details"
-                android:layout_marginEnd="8dp"
-                app:tint="@color/Red" />
+                        <!-- Imagen debajo del texto -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="@drawable/tarjeta1"
+                        android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <!-- Tarjeta 2 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/educationCard2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Reduce el uso de plásticos de un solo uso"
-                    android:textSize="16sp"
-                    android:textColor="@color/Blue" />
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Evita productos con empaques innecesarios. Lleva tus propias bolsas reutilizables, botellas y recipientes al hacer compras."
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/Red" />
 
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-    <!-- Tarjeta 3 -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/educationCard3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reduce el uso de plásticos de un solo uso"
+                            android:textSize="16sp"
+                            android:textColor="@color/Blue" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Evita productos con empaques innecesarios. Lleva tus propias bolsas reutilizables, botellas y recipientes cuando compres. Prefiere productos a granel y apoya marcas que usen materiales biodegradables o reciclables."
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@android:drawable/ic_menu_info_details"
-                android:layout_marginEnd="8dp"
-                app:tint="@color/Red" />
+                        <!-- Imagen debajo del texto -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="@drawable/tarjeta2cili"
+                        android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <!-- Tarjeta 3 -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/educationCard3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Reutiliza materiales antes de desecharlos"
-                    android:textSize="16sp"
-                    android:textColor="@color/Blue" />
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dale una segunda vida a objetos como frascos, ropa o muebles. Por ejemplo, usa frascos de vidrio para almacenar alimentos."
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="4dp" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_info_details"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/Red" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reutiliza materiales antes de desecharlos"
+                            android:textSize="16sp"
+                            android:textColor="@color/Blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dale una segunda vida a frascos, ropa vieja, muebles o cajas. Puedes transformar botellas en macetas, camisetas viejas en trapos o reutilizar cajas para organizar. Reutilizar reduce la demanda de nuevos productos y evita residuos."
+                            android:textSize="14sp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="4dp" />
+
+                        <!-- Imagen debajo del texto -->
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="@drawable/tarjeta3"
+                        android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </LinearLayout>
+

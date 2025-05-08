@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.example.bogotrash.databinding.FragmentCampaignBinding
 
@@ -23,6 +24,8 @@ class CampaignFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(requireActivity().window, true)
 
         // Configurar el botón Participar
         binding.participateButton.setOnClickListener {
