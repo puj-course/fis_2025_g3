@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'features-**'
+      - main
     paths:
       - 'src/**'
       - '.github/**'
