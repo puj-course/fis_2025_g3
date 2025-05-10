@@ -8,12 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import com.example.bogotrash.R
-import com.example.bogotrash.SessionManager
+import com.example.bogotrash.core.SessionManager
 import com.example.bogotrash.viewmodel.MapViewModel
 import com.example.bogotrash.viewmodel.WasteGuideViewModel
 import com.example.bogotrash.viewmodel.RecyclerConnectionViewModel
 import com.example.bogotrash.viewmodel.RewardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.core.view.WindowCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_main)
 
         // Inicializar ViewModels
@@ -87,18 +89,5 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-        // Botón logout
-        val logoutButton = findViewById<Button>(R.id.logoutButton)
-        logoutButton.setOnClickListener {
-            val session = SessionManager.instance
-            session.clearSession()
-
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
-        }
-
     }
 }

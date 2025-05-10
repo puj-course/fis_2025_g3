@@ -5,13 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    android:fitsSystemWindows="true">
 
     <!-- Título -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aprender y participar"
+        android:text="Aprende y participa"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/Blue"

@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:padding="16dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:fitsSystemWindows="true">
 
     <!-- Logo -->
     <ImageView
@@ -14,18 +15,19 @@
         android:layout_height="100dp"
         android:src="@drawable/bogotrashlogo"
         android:contentDescription="Logo de BogoTrash"
-        android:layout_marginBottom="16dp"
-        app:tint="@color/Red" />
+        android:layout_marginBottom="16dp" />
 
     <!-- Texto de bienvenida -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a bogotrash tu app para hacer una Bogotá mejor"
+        android:text="Bienvenido a BogoTrash, tu app para hacer una Bogotá mas limpia"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/Blue"
+        android:textColor="@color/black"
         android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginBottom="32dp" />
 
     <!-- Contenedor para los botones -->
@@ -42,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registro"
-            android:backgroundTint="@color/Yellow"
-            android:textColor="@color/Red"
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/white"
             android:layout_marginEnd="16dp" />
 
         <!-- Botón de Inicio de Sesión -->
@@ -52,29 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Iniciar sesión"
-            android:backgroundTint="@color/Yellow"
-            android:textColor="@color/Red" />
+            android:backgroundTint="@color/Red"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
-    <!-- Barra decorativa -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@color/Red"
-            android:layout_marginBottom="4dp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:background="@color/Yellow" />
-
-    </LinearLayout>
 
 </LinearLayout>

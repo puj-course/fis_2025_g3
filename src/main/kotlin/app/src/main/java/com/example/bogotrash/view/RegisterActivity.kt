@@ -7,11 +7,13 @@ import com.example.bogotrash.R
 import com.example.bogotrash.model.Recycler
 import com.example.bogotrash.model.User
 import com.example.bogotrash.repository.UserRepository
+import androidx.core.view.WindowCompat
 
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_register)
 
 
