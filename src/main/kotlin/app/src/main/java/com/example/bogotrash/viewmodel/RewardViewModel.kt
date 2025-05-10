@@ -18,7 +18,7 @@ class RewardViewModel : ViewModel() {
 
     fun loadRewards() {
         val rewardList = listOf(
-            Reward(1, 100, "Descuento 10% en EcoTienda", "ECO10")
+            Reward(1,60, "Bonificación Semillas","Semillas de amistad", "SEEDS2025", android.R.drawable.ic_menu_gallery)
         )
         _rewards.value = rewardList
     }

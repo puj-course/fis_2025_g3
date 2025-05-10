@@ -2,57 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/white"
     android:padding="16dp"
-    android:fitsSystemWindows="true">
+    android:background="@color/white">
 
+    <!-- Título -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tus recompensas"
+        android:text="Recompensas Ecológicas"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/Blue"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp" />
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
 
-    <androidx.cardview.widget.CardView
+    <!-- RecyclerView para la lista de recompensas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRewards"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center">
-
-            <View
-                android:layout_width="80dp"
-                android:layout_height="60dp"
-                android:background="@color/Yellow"
-                android:layout_marginBottom="8dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="120 pts"
-                android:textSize="18sp"
-                android:textColor="@color/Blue"
-                android:layout_marginBottom="8dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Participar"
-                android:backgroundTint="@color/Yellow"
-                android:textColor="@color/Red" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
 
 </LinearLayout>

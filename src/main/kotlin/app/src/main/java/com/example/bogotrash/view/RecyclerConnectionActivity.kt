@@ -29,7 +29,7 @@ class RecyclerConnectionActivity : AppCompatActivity() {
             adapter = RecyclerAdapter(recyclers)
         }
 
-        // conectar con la base de datos 
+        // conectar con la base de datos
         /*
         val databaseConnection = DatabaseConnection(this)
         val recyclersFromDb = databaseConnection.getRecyclers()
