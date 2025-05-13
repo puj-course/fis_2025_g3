@@ -1,0 +1,39 @@
+name: Compilacion
+run-name: Prueba de compilado para @${{ github.actor }}
+on:
+  push:
+    branches:
+      - 'features-**'
+    paths:
+      - 'src/**'
+      - '.github/**'
+  pull_request:
+    types: [opened]
+    branches:
+      - 'develop-g3'
+      - main
+    paths:
+      - 'src/**'
+      - '.github/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/main/kotlin
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'gradle'
+          cache-dependency-path: |
+            src/*.gradle*
+            src/**/gradle-wrapper.properties
+
+      - name: Preparar gradle
+        uses: gradle/actions/setup-gradle@v4
+      - name: Compilar con Gradle
+        run: ./gradlew build --no-daemon
