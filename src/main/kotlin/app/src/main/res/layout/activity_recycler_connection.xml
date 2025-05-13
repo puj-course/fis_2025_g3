@@ -3,15 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white"
-    android:fitsSystemWindows="true">
+    android:padding="16dp"
+    android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Campo de búsqueda -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewRecyclers"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="conexion recicladores"
-        android:textSize="20sp"
-        android:textColor="@color/Blue" />
+        android:queryHint="Buscar reciclador"
+        android:layout_marginBottom="16dp" />
+
+    <!-- RecyclerView para la lista de recicladores -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRecyclers"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
 
 </LinearLayout>
