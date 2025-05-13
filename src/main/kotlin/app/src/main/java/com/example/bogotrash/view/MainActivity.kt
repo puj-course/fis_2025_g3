@@ -15,6 +15,11 @@ import com.example.bogotrash.viewmodel.RecyclerConnectionViewModel
 import com.example.bogotrash.viewmodel.RewardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.core.view.WindowCompat
+import com.example.bogotrash.view.RecyclerConnectionActivity
+import com.example.bogotrash.view.RewardsActivity
+import com.example.bogotrash.view.ProfileActivity
+import com.example.bogotrash.view.LearnMoreActivity
+import com.example.bogotrash.view.CampaignActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -65,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.campaignSection).setOnClickListener {
             startActivity(Intent(this, CampaignActivity::class.java))
         }
+
 
         // Configurar la barra de navegación inferior
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigation)
