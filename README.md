@@ -8,6 +8,7 @@
 
 ## 🌍 Descripción del Proyecto
 BogoTrash es una aplicación móvil diseñada para ayudar a los ciudadanos de Bogotá a reciclar de manera eficiente. Conectamos a las personas con recicladores autorizados, brindamos una guía de clasificación de residuos y facilitamos la ubicación de puntos de reciclaje cercanos. Además, promovemos la educación ambiental y recompensamos las buenas prácticas. 🚀
+Desarrollado en Android Estudio con Kotlin
 
 ---
 
