@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:id="@+id/recyclerNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reciclador: "
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/Red"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/recyclerPhoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teléfono: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/messageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribe tu mensaje"
+        android:backgroundTint="@color/Red"
+        android:textColor="@color/black"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:minLines="4"
+        android:gravity="top"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/sendSmsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar SMS"
+        android:backgroundTint="@color/Red"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:padding="12dp"/>
+</LinearLayout>
