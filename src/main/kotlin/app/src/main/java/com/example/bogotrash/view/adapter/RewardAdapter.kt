@@ -1,4 +1,4 @@
-package com.example.bogotrash
+package com.example.bogotrash.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bogotrash.R
 import com.example.bogotrash.model.Reward
 
 class RewardAdapter(private val rewards: List<Reward>) :

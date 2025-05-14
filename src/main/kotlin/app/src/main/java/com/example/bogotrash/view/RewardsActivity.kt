@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bogotrash.databinding.ActivityRewardsBinding
 import com.example.bogotrash.model.Reward
-import com.example.bogotrash.RewardAdapter
+import com.example.bogotrash.view.adapter.RewardAdapter
+import androidx.core.view.WindowCompat
+
 
 class RewardsActivity : AppCompatActivity() {
 
@@ -13,6 +15,7 @@ class RewardsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         binding = ActivityRewardsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -29,14 +32,5 @@ class RewardsActivity : AppCompatActivity() {
             adapter = RewardAdapter(rewards)
         }
 
-        // Código comentado para conectar con la base de datos cuando esté lista
-        /*
-        val databaseConnection = DatabaseConnection(this)
-        val rewardsFromDb = databaseConnection.getRewards()
-        binding.recyclerViewRewards.apply {
-            layoutManager = LinearLayoutManager(this@RewardsActivity)
-            adapter = RewardAdapter(rewardsFromDb)
-        }
-        */
     }
 }

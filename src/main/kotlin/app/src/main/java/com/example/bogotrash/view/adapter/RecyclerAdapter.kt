@@ -1,18 +1,15 @@
-package com.example.bogotrash.view
+package com.example.bogotrash.view.adapter
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bogotrash.R
 import com.example.bogotrash.model.Recycler
 
-class RecyclerAdapter(private val recyclers: List<Recycler>) :
+class RecyclerAdapter(private var recyclers: List<Recycler>) :
     RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>() {
 
     class RecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,31 +33,17 @@ class RecyclerAdapter(private val recyclers: List<Recycler>) :
         holder.addressTextView.text = "Dir: ${recycler.address}"
         holder.zoneTextView.text = "Zona: ${recycler.zone}"
 
-        // Simular estado de disponibilidad (puedes cambiar la lógica según la BD)
-        val isAvailable = position != 3 // Simulamos que el último (Pedro) no está disponible
         holder.contactButton.text = "Contactar"
-        holder.contactButton.isEnabled = isAvailable
-        holder.contactButton.backgroundTintList = ContextCompat.getColorStateList(
-            holder.itemView.context,
-            if (isAvailable) R.color.Yellow else R.color.gray
-        )
-        holder.contactButton.setTextColor(
-            ContextCompat.getColor(
-                holder.itemView.context,
-                if (isAvailable) R.color.Red else R.color.black
-            )
-        )
-
-        // Acción para el botón "Contactar" (iniciar una llamada)
+        holder.contactButton.isEnabled = true
         holder.contactButton.setOnClickListener {
-            if (isAvailable) {
-                val intent = Intent(Intent.ACTION_DIAL).apply {
-                    data = Uri.parse("tel:${recycler.phone}")
-                }
-                holder.itemView.context.startActivity(intent)
-            }
+            // Funcionalidad por implementar
         }
     }
 
     override fun getItemCount(): Int = recyclers.size
+
+    fun updateList(newList: List<Recycler>) {
+        recyclers = newList
+        notifyDataSetChanged()
+    }
 }
