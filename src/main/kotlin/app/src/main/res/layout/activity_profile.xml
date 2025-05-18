@@ -287,6 +287,19 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/view_ranking_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver Ranking"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="20dp"
+                android:backgroundTint="@color/Blue"
+                android:layout_marginTop="16dp"
+                android:padding="12dp"/>
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_button"

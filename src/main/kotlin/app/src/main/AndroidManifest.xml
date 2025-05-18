@@ -38,6 +38,7 @@
         <activity android:name=".view.ProfileActivity" android:exported="false" />
         <activity android:name=".view.WebViewActivity" android:exported="false" />
         <activity android:name=".view.SendSmsActivity" /> <!-- Pa lo de los sms -->
+        <activity android:name=".view.RankingActivity" />
     </application>
 
 </manifest>
