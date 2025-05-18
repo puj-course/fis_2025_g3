@@ -27,10 +27,11 @@ class ProfileActivity : AppCompatActivity() {
         val userLevelTextView = findViewById<TextView>(R.id.user_level)
         val levelProgress = findViewById<LinearProgressIndicator>(R.id.level_progress)
         val progressText = findViewById<TextView>(R.id.progress_text)
-        val totalPointsTextView = findViewById<TextView>(R.id.total_points)  // <- NUEVO
+        val totalPointsTextView = findViewById<TextView>(R.id.total_points)
         val participationsTextView = findViewById<TextView>(R.id.campaigns_participated)
         val rewardsRedeemedTextView = findViewById<TextView>(R.id.rewards_redeemed)
         val logoutButton = findViewById<MaterialButton>(R.id.logout_button)
+        val rankingButton = findViewById<MaterialButton>(R.id.view_ranking_button)
 
         logoutButton.setOnClickListener {
             session.clearSession()
@@ -38,6 +39,11 @@ class ProfileActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
+        }
+
+        rankingButton.setOnClickListener { // <-Pa el boton de ranking
+            val intent = Intent(this, RankingActivity::class.java)
+            startActivity(intent)
         }
 
         val userEmail = session.getUserEmail()
@@ -115,3 +121,4 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 }
+

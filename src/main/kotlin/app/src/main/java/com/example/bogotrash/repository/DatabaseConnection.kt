@@ -12,7 +12,7 @@ object DatabaseConnection {
 
     init {
         try {
-            Class.forName("com.mysql.jdbc.Driver") // 👈 Correcto para la versión 5.1.49
+            Class.forName("com.mysql.jdbc.Driver")
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }
