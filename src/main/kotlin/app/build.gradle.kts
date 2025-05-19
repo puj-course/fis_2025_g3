@@ -55,6 +55,20 @@ dependencies {
     implementation ("mysql:mysql-connector-java:5.1.49")
     //Mapa google maps
     implementation ("com.google.android.gms:play-services-maps:19.2.0")
+    //Test Unitarios
+    testImplementation(libs.junit)
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("org.mockito:mockito-core:5.5.0")
+    testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
+    //Test instrumentados
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    //Debug y herramientas de test
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    //Resto implementaciones
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -73,4 +87,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(kotlin("test"))
 }
