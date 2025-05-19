@@ -53,6 +53,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     //DB
     implementation ("mysql:mysql-connector-java:5.1.49")
+    //Mapa google maps
+    implementation ("com.google.android.gms:play-services-maps:19.2.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

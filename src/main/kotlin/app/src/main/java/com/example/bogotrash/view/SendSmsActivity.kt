@@ -12,7 +12,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.bogotrash.R
+import com.example.bogotrash.core.SessionManager
+import com.example.bogotrash.repository.DatabaseConnection
 import androidx.core.view.WindowCompat
+import kotlin.concurrent.thread
 
 class SendSmsActivity : AppCompatActivity() {
 
@@ -22,6 +25,7 @@ class SendSmsActivity : AppCompatActivity() {
     private lateinit var sendButton: Button
 
     private var phoneNumber: String? = null
+    private var recyclerName: String = "Desconocido"
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -39,7 +43,7 @@ class SendSmsActivity : AppCompatActivity() {
         messageEditText = findViewById(R.id.messageEditText)
         sendButton = findViewById(R.id.sendSmsButton)
 
-        val recyclerName = intent.getStringExtra("recycler_name") ?: "Desconocido"
+        recyclerName = intent.getStringExtra("recycler_name") ?: "Desconocido"
         phoneNumber = intent.getStringExtra("recycler_phone")
 
         nameTextView.text = "Reciclador: $recyclerName"
@@ -64,10 +68,65 @@ class SendSmsActivity : AppCompatActivity() {
         try {
             val smsManager: SmsManager = SmsManager.getDefault()
             smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-            Toast.makeText(this, "Mensaje enviado correctamente", Toast.LENGTH_SHORT).show()
+
+            updatePoints()
+
+            Toast.makeText(this, "Mensaje enviado correctamente, Ganaste 15 puntos!", Toast.LENGTH_SHORT).show()
             finish()
         } catch (e: Exception) {
             Toast.makeText(this, "Error al enviar SMS: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
+
+    private fun updatePoints() {
+        val userEmail = SessionManager.instance.getUserEmail()
+        if (userEmail == null) {
+            Toast.makeText(this, "No hay sesión activa", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        thread {
+            try {
+                val conn = DatabaseConnection.getConnection()
+                conn?.use { connection ->
+                    val stmtUser = connection.prepareStatement("SELECT id FROM Users WHERE email = ?")
+                    stmtUser.setString(1, userEmail)
+                    val rsUser = stmtUser.executeQuery()
+                    if (!rsUser.next()) return@use
+                    val userId = rsUser.getInt("id")
+                    rsUser.close()
+                    stmtUser.close()
+
+                    val stmtRecycler = connection.prepareStatement("""
+                        SELECT u.id FROM Users u
+                        JOIN Recyclers r ON u.id = r.user_id
+                        WHERE r.phone = ?
+                    """.trimIndent())
+                    stmtRecycler.setString(1, phoneNumber)
+                    val rsRecycler = stmtRecycler.executeQuery()
+                    if (!rsRecycler.next()) return@use
+                    val recyclerId = rsRecycler.getInt("id")
+                    rsRecycler.close()
+                    stmtRecycler.close()
+
+                    val stmtUpdateUser = connection.prepareStatement(
+                        "UPDATE Users SET total_points = total_points + 15 WHERE id = ?"
+                    )
+                    stmtUpdateUser.setInt(1, userId)
+                    stmtUpdateUser.executeUpdate()
+                    stmtUpdateUser.close()
+
+                    val stmtUpdateRecycler = connection.prepareStatement(
+                        "UPDATE Users SET total_points = total_points + 20 WHERE id = ?"
+                    )
+                    stmtUpdateRecycler.setInt(1, recyclerId)
+                    stmtUpdateRecycler.executeUpdate()
+                    stmtUpdateRecycler.close()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }
+

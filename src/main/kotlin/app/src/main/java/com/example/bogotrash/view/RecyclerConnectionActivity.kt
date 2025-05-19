@@ -3,6 +3,7 @@ package com.example.bogotrash.view
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.core.widget.addTextChangedListener
 import com.example.bogotrash.databinding.ActivityRecyclerConnectionBinding
@@ -20,6 +21,7 @@ class RecyclerConnectionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         binding = ActivityRecyclerConnectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
