@@ -1,17 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@color/white"
+    android:background="@color/light_gray"
     android:fitsSystemWindows="true">
 
+    <!-- Título "Mapa de reciclaje" -->
     <TextView
+        android:id="@+id/mapTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mapa de Reciclaje"
+        android:text="Mapa de reciclaje"
         android:textSize="20sp"
-        android:textColor="@color/Blue" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp" />
 
-</LinearLayout>
+    <!-- Placeholder para el mapa (rectángulo gris claro) -->
+    <View
+        android:id="@+id/mapPlaceholder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/light_gray"
+        app:layout_constraintTop_toBottomOf="@id/mapTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Marcadores de reciclaje (placeholders) -->
+    <ImageView
+        android:id="@+id/marker1"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintTop_toTopOf="@id/mapPlaceholder"
+        app:layout_constraintStart_toStartOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.3"
+    />
+    <ImageView
+        android:id="@+id/marker2"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintTop_toTopOf="@id/mapPlaceholder"
+        app:layout_constraintEnd_toEndOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.7" />
+
+    <ImageView
+        android:id="@+id/marker3"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintBottom_toBottomOf="@id/mapPlaceholder"
+        app:layout_constraintStart_toStartOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.2" />
+
+    <ImageView
+        android:id="@+id/marker4"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintBottom_toBottomOf="@id/mapPlaceholder"
+        app:layout_constraintEnd_toEndOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.6" />
+
+    <ImageView
+        android:id="@+id/marker5"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintTop_toTopOf="@id/mapPlaceholder"
+        app:layout_constraintStart_toStartOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/marker6"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_recycle_marker"
+        android:contentDescription="Marcador de reciclaje"
+        app:layout_constraintBottom_toBottomOf="@id/mapPlaceholder"
+        app:layout_constraintStart_toStartOf="@id/mapPlaceholder"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.8" />
+
+    <!-- Botón "+" -->
+    <ImageView
+        android:id="@+id/addButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@android:drawable/ic_menu_add"
+        android:background="@color/Red"
+        android:contentDescription="Añadir punto de reciclaje"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
