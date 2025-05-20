@@ -15,6 +15,7 @@ on:
     branches:
       - 'main'
       - 'develop-g3'
+      - 'features-**'
     paths:
       - 'src/**'
       - '.github/**'
@@ -43,6 +44,10 @@ jobs:
       - name: Descargar configuración por defecto de Detekt
         run: |
           curl -sSLo default-detekt-config.yml https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+
+      - name: Parchear configuración inválida
+        run: |
+          sed -i 's/excludes: \[\]/excludes: ""/' default-detekt-config.yml
 
       - name: Ejecutar Detekt
         run: |
