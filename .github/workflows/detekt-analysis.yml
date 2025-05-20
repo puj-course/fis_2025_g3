@@ -1,0 +1,40 @@
+name: Análisis Estático con Detekt
+run-name: Análisis de código para ${{ github.actor }}
+on:
+  push:
+    branches:
+      - main
+      - develop-g3
+      - 'features-**'
+      - 'hotfix-**'
+    paths:
+      - 'src/**'
+      - '.github/**'
+  pull_request:
+    types: [opened]
+    branches:
+      - main
+      - develop-g3
+    paths:
+      - 'src/**'
+      - '.github/**'
+jobs:
+  detekt:
+    name: Ejecutar Detekt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preparar JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: "detekt"
+        uses: natiginfo/action-detekt-all@1.23.8
+        with:
+          args: --input ./src --report html:.github/detekt/reports/report.html --config ./.github/detekt/default-detekt-config.yml
+      - name: Subir reporte como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: reporte-detekt
+          path: .github/detekt/reports/report.html

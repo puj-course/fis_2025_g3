@@ -10,11 +10,14 @@ import com.example.bogotrash.model.UserRanking
 import com.example.bogotrash.repository.DatabaseConnection
 import kotlin.concurrent.thread
 import com.example.bogotrash.view.adapter.RankingAdapter
+import androidx.core.view.WindowCompat
 
 class RankingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContentView(R.layout.activity_ranking)
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.ranking_recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)

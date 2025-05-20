@@ -18,6 +18,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BogoTrash">
+
+        <!--Pa lo del mapa -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDuMRFPGlNqw1m0EzjVb9LluW8k7f-XP_Q" />
+
         <!-- WelcomeActivity como actividad inicial -->
         <activity
             android:name=".view.WelcomeActivity"
