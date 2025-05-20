@@ -3,13 +3,22 @@ run-name: Análisis de código por ${{ github.actor }}
 
 on:
   push:
-    branches: [ main, develop-g3, 'features-**' ]
-    paths: [ 'src/**', '.github/**' ]
+    branches:
+      - 'main'
+      - 'develop-g3'
+      - 'features-**'
+    paths:
+      - 'src/**'
+      - '.github/**'
   pull_request:
     types: [opened]
-    branches: [ main, develop-g3, 'features-**' ]
-    paths: [ 'src/**', '.github/**' ]
-
+    branches:
+      - 'main'
+      - 'develop-g3'
+      - 'features-**'
+    paths:
+      - 'src/**'
+      - '.github/**'
 jobs:
   detekt:
     name: Ejecutar Detekt
