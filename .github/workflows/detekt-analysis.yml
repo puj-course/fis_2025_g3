@@ -8,17 +8,15 @@ on:
       - 'develop-g3'
       - 'features-**'
     paths:
-      - 'app/**'
+      - 'src/**'
       - '.github/**'
-
   pull_request:
     types: [opened]
     branches:
       - 'main'
       - 'develop-g3'
-      - 'features-**'
     paths:
-      - 'app/**'
+      - 'src/**'
       - '.github/**'
 
 jobs:
@@ -39,16 +37,20 @@ jobs:
       - name: Descargar Detekt
         run: |
           curl -sSLo detekt-cli.jar https://github.com/detekt/detekt/releases/download/v1.23.6/detekt-cli-1.23.6-all.jar
+          mkdir -p build/detekt
+          mv detekt-cli.jar build/detekt/detekt.jar
 
       - name: Ejecutar Detekt
         run: |
-         java -jar build/detekt/detekt.jar \
-         --input src/main/kotlin/app \
-         --report html:build/reports/detekt/report.html \
-         --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+          mkdir -p .github/reports/detekt
+          java -jar build/detekt/detekt.jar \
+            --input src/main/kotlin/app \
+            --report html:.github/reports/detekt/report.html \
+            --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
 
       - name: Subir reporte como artefacto
         uses: actions/upload-artifact@v4
         with:
           name: reporte-detekt
-          path: build/reports/detekt/report.html
+          path: .github/reports/detekt/report.html
+
