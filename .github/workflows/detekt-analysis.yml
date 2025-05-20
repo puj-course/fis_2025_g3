@@ -59,6 +59,3 @@ jobs:
         with:
           name: reporte-detekt
           path: .github/reports/detekt/report.html
-
-          path: .github/reports/detekt/report.html
-
