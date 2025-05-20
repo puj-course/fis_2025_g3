@@ -37,4 +37,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: reporte-detekt
-          path: : .github/detekt/reports/report.html
+          path: .github/detekt/reports/report.html
