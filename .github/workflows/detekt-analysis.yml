@@ -3,22 +3,12 @@ run-name: Análisis de código por ${{ github.actor }}
 
 on:
   push:
-    branches:
-      - 'main'
-      - 'develop-g3'
-      - 'features-**'
-    paths:
-      - 'src/**'
-      - '.github/**'
+    branches: [ main, develop-g3, 'features-**' ]
+    paths: [ 'src/**', '.github/**' ]
   pull_request:
     types: [opened]
-    branches:
-      - 'main'
-      - 'develop-g3'
-      - 'features-**'
-    paths:
-      - 'src/**'
-      - '.github/**'
+    branches: [ main, develop-g3, 'features-**' ]
+    paths: [ 'src/**', '.github/**' ]
 
 jobs:
   detekt:
@@ -26,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repositorio
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Configurar JDK
         uses: actions/setup-java@v4
@@ -37,13 +26,13 @@ jobs:
 
       - name: Descargar Detekt
         run: |
-          curl -sSLo detekt-cli.jar https://github.com/detekt/detekt/releases/download/v1.23.6/detekt-cli-1.23.6-all.jar
-          mkdir -p build/detekt
-          mv detekt-cli.jar build/detekt/detekt.jar
+          curl -sSLo build/detekt/detekt-cli.jar \
+            https://github.com/detekt/detekt/releases/download/v1.23.6/detekt-cli-1.23.6-all.jar
 
       - name: Descargar configuración por defecto de Detekt
         run: |
-          curl -sSLo default-detekt-config.yml https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+          curl -sSLo default-detekt-config.yml \
+            https://raw.githubusercontent.com/detekt/detekt/v1.23.6/detekt-core/src/main/resources/default-detekt-config.yml
 
       - name: Parchear configuración inválida
         run: |
@@ -52,14 +41,15 @@ jobs:
       - name: Ejecutar Detekt
         run: |
           mkdir -p .github/reports/detekt
-          java -jar build/detekt/detekt.jar \
+          java -jar build/detekt/detekt-cli.jar \
             --input src/main/kotlin/app \
-            --report html:.github/reports/detekt/report.html \
-            --config default-detekt-config.yml
+            --config default-detekt-config.yml \
+            --report html:.github/reports/detekt/report.html
 
-      - name: Subir reporte como artefacto
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: reporte-detekt
+          path: .github/reports/detekt/report.html
+
           path: .github/reports/detekt/report.html
 
