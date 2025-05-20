@@ -1,37 +1,53 @@
 name: Análisis Estático con Detekt
-run-name: Análisis de código para ${{ github.actor }}
+run-name: Análisis de código por ${{ github.actor }}
+
 on:
   push:
     branches:
-      - main
-      - develop-g3
+      - 'main'
+      - 'develop-g3'
       - 'features-**'
     paths:
-      - 'src/**'
+      - 'app/**'
       - '.github/**'
+
   pull_request:
     types: [opened]
     branches:
-      - main
-      - develop-g3
+      - 'main'
+      - 'develop-g3'
+      - 'features-**'
     paths:
-      - 'src/**'
+      - 'app/**'
       - '.github/**'
+
 jobs:
   detekt:
     name: Ejecutar Detekt
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Preparar JDK
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '21'
-      - name: "detekt"
-        uses: natiginfo/action-detekt-all@1.23.8
-        with:
-          args: --input ./src --report html:build/reports/detekt/report.html --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+          java-version: '17'
+
+      - name: Descargar Detekt
+        run: |
+          curl -sSLo detekt-cli.jar https://github.com/detekt/detekt/releases/download/v1.23.6/detekt-cli-1.23.6-all.jar
+
+      - name: Ejecutar Detekt
+        run: |
+          java -jar detekt-cli.jar \
+            --input app/src/main/java \
+            --report html:build/reports/detekt/report.html \
+            --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml \
+            --build-upon-default-config
+
       - name: Subir reporte como artefacto
         uses: actions/upload-artifact@v4
         with:
