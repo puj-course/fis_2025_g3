@@ -6,6 +6,7 @@ on:
       - main
       - develop-g3
       - 'features-**'
+      - 'hotfix-**'
     paths:
       - 'src/**'
       - '.github/**'
