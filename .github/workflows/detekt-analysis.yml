@@ -30,9 +30,9 @@ jobs:
           java-version: '21'
       - name: Descargar Detekt
         run: |
-          curl -sSLO https://github.com/detekt/detekt/releases/download/v1.23.0/detekt-1.23.0-all.jar
+          curl -sSLO https://github.com/detekt/detekt/releases/download/v1.23.8/detekt-1.23.0-all.jar
           mkdir -p build/detekt
-          mv detekt-1.23.0-all.jar build/detekt/detekt.jar
+          mv detekt-1.23.8-all.jar build/detekt/detekt.jar
       - name: Ejecutar Detekt
         run: |
           java -jar build/detekt/detekt.jar \
