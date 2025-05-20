@@ -4,13 +4,15 @@ on:
   push:
     branches:
       - 'features-**'
+      - main
+      - develop-g3
     paths:
       - 'src/**'
       - '.github/**'
   pull_request:
     types: [opened]
     branches:
-      - 'develop-g3'
+      - develop-g3
       - main
     paths:
       - 'src/**'
