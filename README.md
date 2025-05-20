@@ -1,11 +1,11 @@
-Prueba BogoTrash, aquí tienes nuestra versión de lanzamiento:
-[Descargar APK] BogoTrash.apk
-
 ![BogoTrashTransparente](https://github.com/user-attachments/assets/4e4d677b-98ea-4686-b66c-50ed5c9136f9)
 
 ###### (fis\_2025\_g3)
 
 # ♻️ BogoTrash: Plataforma para Fomentar el Reciclaje en Bogotá
+
+# Prueba BogoTrash, aquí tienes nuestra versión de lanzamiento:
+# [Descargar APK] (https://github.com/puj-course/fis_2025_g3/blob/8b143fe6d25d99e7edbdedd301cbf3275df47861/BogoTrash.apk)
 
 ## 🌍 Descripción del Proyecto
 
