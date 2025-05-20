@@ -1,11 +1,10 @@
 name: Análisis Estático con Detekt
-run-name: Análisis de código por ${{ github.actor }}
-
+run-name: Análisis de código para ${{ github.actor }}
 on:
   push:
     branches:
-      - 'main'
-      - 'develop-g3'
+      - main
+      - develop-g3
       - 'features-**'
     paths:
       - 'src/**'
@@ -13,9 +12,8 @@ on:
   pull_request:
     types: [opened]
     branches:
-      - 'main'
-      - 'develop-g3'
-      - 'features-**'
+      - main
+      - develop-g3
     paths:
       - 'src/**'
       - '.github/**'
@@ -23,39 +21,19 @@ jobs:
   detekt:
     name: Ejecutar Detekt
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Configurar JDK
+      - name: Preparar JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
-
-      - name: Descargar Detekt
-        run: |
-          curl -sSLo build/detekt/detekt-cli.jar \
-            https://github.com/detekt/detekt/releases/download/v1.23.6/detekt-cli-1.23.6-all.jar
-
-      - name: Descargar configuración por defecto de Detekt
-        run: |
-          curl -sSLo default-detekt-config.yml \
-            https://raw.githubusercontent.com/detekt/detekt/v1.23.6/detekt-core/src/main/resources/default-detekt-config.yml
-
-      - name: Parchear configuración inválida
-        run: |
-          sed -i 's/excludes: \[\]/excludes: ""/' default-detekt-config.yml
-
-      - name: Ejecutar Detekt
-        run: |
-          mkdir -p .github/reports/detekt
-          java -jar build/detekt/detekt-cli.jar \
-            --input src/main/kotlin/app \
-            --config default-detekt-config.yml \
-            --report html:.github/reports/detekt/report.html
-
-      - uses: actions/upload-artifact@v4
+          java-version: '21'
+      - name: "detekt"
+        uses: natiginfo/action-detekt-all@1.23.8
+        with:
+          args: --input ./src --report html:build/reports/detekt/report.html --config ./.github/detekt/default-detekt-config.yml
+      - name: Subir reporte como artefacto
+        uses: actions/upload-artifact@v4
         with:
           name: reporte-detekt
-          path: .github/reports/detekt/report.html
+          path: build/reports/detekt/report.html
