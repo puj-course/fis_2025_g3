@@ -42,11 +42,10 @@ jobs:
 
       - name: Ejecutar Detekt
         run: |
-          java -jar detekt-cli.jar \
-            --input app/src/main/java \
-            --report html:build/reports/detekt/report.html \
-            --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml \
-            --build-upon-default-config
+         java -jar build/detekt/detekt.jar \
+         --input src/main/kotlin/app \
+         --report html:build/reports/detekt/report.html \
+         --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
 
       - name: Subir reporte como artefacto
         uses: actions/upload-artifact@v4
