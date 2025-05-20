@@ -31,9 +31,7 @@ jobs:
       - name: "detekt"
         uses: natiginfo/action-detekt-all@1.23.8
         with:
-          args: --input ./src \
-            --report html:build/reports/detekt/report.html \
-            --config
+          args: --input ./src --report html:build/reports/detekt/report.html --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
       - name: Subir reporte como artefacto
         uses: actions/upload-artifact@v4
         with:
