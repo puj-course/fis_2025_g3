@@ -40,13 +40,17 @@ jobs:
           mkdir -p build/detekt
           mv detekt-cli.jar build/detekt/detekt.jar
 
+      - name: Descargar configuración por defecto de Detekt
+        run: |
+          curl -sSLo default-detekt-config.yml https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+
       - name: Ejecutar Detekt
         run: |
           mkdir -p .github/reports/detekt
           java -jar build/detekt/detekt.jar \
             --input src/main/kotlin/app \
             --report html:.github/reports/detekt/report.html \
-            --config https://raw.githubusercontent.com/detekt/detekt/main/detekt-core/src/main/resources/default-detekt-config.yml
+            --config default-detekt-config.yml
 
       - name: Subir reporte como artefacto
         uses: actions/upload-artifact@v4
